@@ -1,19 +1,36 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
-   
-    public int count;
+    public Text countPickupText;
+    public Text countLifeText;
+    public Text winningText;
+    public Text loosingText;
+    
+    public int countPickup;
     private int countMax;
 
-    void start(){
-        count = 0;
+
+
+    void Start()
+    {
+        countPickup = 0;
         countMax = 5;
+        countLifeText.text = "1 vie";
+        CountingMessage();
+
+        // text en cas de fin de parti
+        winningText.text = "";
+        loosingText.text = "";
+
+
     }
 
-   void OnTriggerEnter(Collider coco){
+    void OnTriggerEnter(Collider coco){
 
        string tag = coco.gameObject.tag;
 
@@ -23,11 +40,12 @@ public class PlayerInteraction : MonoBehaviour
            coco.gameObject.SetActive(false);
 
            // on augmente le compte des objets
-           count++;
-
+           countPickup++;
+           CountingMessage();
+            
            // si on les a tous alors on fini la partie
-           if(count == countMax){
-               
+           if(countPickup == countMax){
+                winningText.text = "Bien joué tu as gagné !";
            }
 
        }
@@ -37,10 +55,18 @@ public class PlayerInteraction : MonoBehaviour
                 // si on a encore une vie on recommence
 
                 // si on a plus de vie en stock la partie se termine
+                loosingText.text = "Dommage essay encore :D";
 
             }
         }
 
-
    }
+
+    void CountingMessage()
+    {
+        countPickupText.text = "restant : " +(countMax-countPickup).ToString();
+    }
+
+
+
 }
