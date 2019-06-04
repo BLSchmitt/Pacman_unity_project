@@ -5,6 +5,14 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour
 {
    
+    public int count;
+    private int countMax;
+
+    void start(){
+        count = 0;
+        countMax = 5;
+    }
+
    void OnTriggerEnter(Collider coco){
 
        string tag = coco.gameObject.tag;
@@ -12,11 +20,16 @@ public class PlayerInteraction : MonoBehaviour
        // si on récupère un objet 
        if(tag == "pickup"){
            // on fait disparaitre l'objet
+           coco.gameObject.SetActive(false);
 
            // on augmente le compte des objets
-
+           count++;
 
            // si on les a tous alors on fini la partie
+           if(count == countMax){
+               
+           }
+
        }
         else{
             // si on impact un ennemi
