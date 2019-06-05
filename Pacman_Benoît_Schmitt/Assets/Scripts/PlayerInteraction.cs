@@ -66,6 +66,7 @@ public class PlayerInteraction : MonoBehaviour
         // si on les a tous alors on fini la partie
         if(countPickup == countMax){
             winningText.text = "Bien joué tu as gagné !";
+            StartCoroutine(theEnd());
         }
     }
 
@@ -87,8 +88,16 @@ public class PlayerInteraction : MonoBehaviour
             else{
             // si on a plus de vie en stock la partie se termine
             loosingText.text = "Dommage essay encore :D";
+            // quitter la partie
+            StartCoroutine(theEnd());
             }
         }
+    }
+
+    // on quitte la partie apres 2 secondes
+    IEnumerator theEnd(){
+        yield return new WaitForSeconds(2f);
+        Application.Quit();
     }
 
     // actualise le text 
