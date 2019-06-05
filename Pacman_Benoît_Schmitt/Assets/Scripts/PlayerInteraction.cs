@@ -20,7 +20,7 @@ public class PlayerInteraction : MonoBehaviour
     // le nombre de vie restante
     public int life;
     // le nombre de pickup total
-    private int countMax;
+    public int countMax = 54;
     
     // si on a recuperer le powerUp qui permet de manger les fantomes
     public Boolean powerUp;
@@ -31,7 +31,6 @@ public class PlayerInteraction : MonoBehaviour
         // initialisation des variables
         countPickup = 0;
         powerUp = false;
-        countMax = 5;
         life = 1;
         lifeText.text = life.ToString() + " vie";
         CountingMessage();
