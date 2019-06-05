@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         rb.MovePosition(transform.position + movement*speed);
         //rb.AddForce(movement*speed);
-
-    
     }
+
+
 }
