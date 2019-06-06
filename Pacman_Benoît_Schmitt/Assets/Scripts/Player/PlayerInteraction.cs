@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 
 public class PlayerInteraction : MonoBehaviour
+// controle toute les interactions que le joueur a avec le reste du monde (objet a recuperer et monstre)
 {
 
     public GameObject ennemis;
@@ -36,6 +37,7 @@ public class PlayerInteraction : MonoBehaviour
     {
         ennemisInteraction = ennemis.GetComponent<EnnemisInteraction>();
     }
+
     void Start()
     {
         // initialisation des variables
@@ -73,7 +75,7 @@ public class PlayerInteraction : MonoBehaviour
         }
    }
 
-
+    // appelle quand on touche un pickup
     private void PickupCollecting(Collider coco){
         // on fait disparaitre l'objet
         coco.gameObject.SetActive(false);
@@ -87,6 +89,7 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    // appelle quand on touche un powerup
     private void PowerupCollecting(Collider coco)
     {
         // c'est aussi un pickup
@@ -100,7 +103,7 @@ public class PlayerInteraction : MonoBehaviour
 
     IEnumerator PowerUpActif()
     {
-        // apres t seconde on ne peut plus manger les ennemis
+        // apres tempsDePowerUp secondes on ne peut plus manger les ennemis
         yield return new WaitForSeconds(tempsDePowerUp);
         powerUp = false;
         ennemisInteraction.EnnemisAreNotKillable();
@@ -136,7 +139,7 @@ public class PlayerInteraction : MonoBehaviour
         }    
     }
 
-    private void RestartLvl()
+    public void RestartLvl()
     {
         throw new NotImplementedException();
     }
@@ -148,7 +151,8 @@ public class PlayerInteraction : MonoBehaviour
         Application.Quit();
     }
 
-    // actualise le text 
+    // actualise le text
+    // on peut ajouter le comptage de score dans cette methode
     public void CountingMessage()
     {
         countPickupText.text = "    restant : " +(countMax-countPickup).ToString();

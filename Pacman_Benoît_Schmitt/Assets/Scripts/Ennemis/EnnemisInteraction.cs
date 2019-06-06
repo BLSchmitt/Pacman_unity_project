@@ -29,7 +29,7 @@ public class EnnemisInteraction : MonoBehaviour
 
 
 
-    // ennemis se fait manger, appelle par PlayerInteraction
+    // l ennemis se fait manger, appelle par PlayerInteraction
     // quand powerUp est active et suite a une collision player / ennemis
     public void EnnemisDestruction(Collider coco){
         // on repere quel ennemis est coco
@@ -37,29 +37,31 @@ public class EnnemisInteraction : MonoBehaviour
         while(ennemis[i].name != coco.name){
             i++;
         }
-        // si on a deja mange cette ennemis i alors on peut plus
+        // si on a deja mange cette ennemis i pendant ce powerup alors on peut plus
          if( rend[i].material.color == color[i]){
             playerInteraction.PlayerDestruction();
         }
         else{
-            // destroy the ennemis and send his ghost to the spawn where it can resurect
+            // detruit l ennemis et envoi son fantome au spawn ou il peut ressuciter
             coco.gameObject.SetActive(false);
-            // resurect the ennemis
+            // processus de resurection de l ennemis
             EnnemisResurection(i);
         }
   }
 
+    // processus de resurection de l ennemis
     private void EnnemisResurection(int i)
     {
+        // on positionne le fantome de l ennemis sur son cadavre et on l active
         deadEnnemis[i].transform.position = ennemis[i].transform.position;
         deadEnnemis[i].SetActive(true);
-        // il redevient intuable, on lui redonne alors sa couleur
+        // l ennemis redevient intuable, on lui rend alors sa couleur
         rend[i].material.color = color[i];
     }
 
 
     // appelle par PlayerInteraction quand on mange un powerup
-    // le player peut alors manger ses ennemis pend un certain temps
+    // le player peut alors manger ses ennemis pendant un certain temps
     // les ennemis deviennent bleu
     public void EnnemisAreKillable(){
     for(int i=0;i<numberOfEnnemis;i++){
@@ -75,5 +77,4 @@ public class EnnemisInteraction : MonoBehaviour
             rend[i].material.color = color[i];
         }
     }
-
 }
