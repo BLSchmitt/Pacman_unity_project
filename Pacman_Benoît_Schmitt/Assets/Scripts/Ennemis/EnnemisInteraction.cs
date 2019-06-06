@@ -15,6 +15,7 @@ public class EnnemisInteraction : MonoBehaviour
     private PlayerInteraction playerInteraction;
 
     public int numberOfEnnemis;
+
     // initialisation
     void Awake(){
         playerInteraction = player.GetComponent<PlayerInteraction>();

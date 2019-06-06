@@ -813,6 +813,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4554926aaf3444c86fec86dadf2a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inChasse: 0
+  readyToChase: 1
+  chasingTime: 1
+  timeBetweenChasse: 2
   navMeshAgent: {fileID: 126011529}
   destinationToGo:
   - {fileID: 1593697578}
@@ -820,7 +824,7 @@ MonoBehaviour:
   - {fileID: 212395187}
   - {fileID: 1406176765}
   - {fileID: 52375579}
-  startPositionEnnemis: {fileID: 1573431492}
+  playerTransform: {fileID: 88718510}
 --- !u!65 &126011532
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1397,6 +1401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4554926aaf3444c86fec86dadf2a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inChasse: 0
+  readyToChase: 1
+  chasingTime: 1
+  timeBetweenChasse: 2
   navMeshAgent: {fileID: 224926929}
   destinationToGo:
   - {fileID: 1593697578}
@@ -1404,7 +1412,7 @@ MonoBehaviour:
   - {fileID: 212395187}
   - {fileID: 1406176765}
   - {fileID: 52375579}
-  startPositionEnnemis: {fileID: 1842102729}
+  playerTransform: {fileID: 88718510}
 --- !u!65 &224926932
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7719,6 +7727,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d4554926aaf3444c86fec86dadf2a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inChasse: 0
+  readyToChase: 1
+  chasingTime: 1
+  timeBetweenChasse: 2
   navMeshAgent: {fileID: 1677504007}
   destinationToGo:
   - {fileID: 1593697578}
@@ -7726,7 +7738,7 @@ MonoBehaviour:
   - {fileID: 212395187}
   - {fileID: 1406176765}
   - {fileID: 52375579}
-  startPositionEnnemis: {fileID: 817444054}
+  playerTransform: {fileID: 88718510}
 --- !u!1 &1679639174
 GameObject:
   m_ObjectHideFlags: 0
