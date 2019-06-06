@@ -93,47 +93,50 @@ public class PlayerInteraction : MonoBehaviour
         PickupCollecting(coco);
         // on peut manger les ennemis pendant un certain temps
         powerUp = true;
-        ennemisInteraction.ennemisAreKillable();
+        ennemisInteraction.EnnemisAreKillable();
         // apres un certain temps on ne peut plus les manger
-        StartCoroutine(powerUpActif());
+        StartCoroutine(PowerUpActif());
     }
 
-    IEnumerator powerUpActif()
+    IEnumerator PowerUpActif()
     {
         // apres t seconde on ne peut plus manger les ennemis
         yield return new WaitForSeconds(tempsDePowerUp);
         powerUp = false;
-        ennemisInteraction.ennemisAreNotKillable();
+        ennemisInteraction.EnnemisAreNotKillable();
     }
 
     // appelle lors d un contact entre le joueur et un ennemis
     public void EnnemisImpacting(Collider coco){
         // si on a le powerup actif alors on mange les fantomes
         if(powerUp){
-            // détruit le fantome
-            // le fantome rentre a sa position initial et reaparait de labas
-            ennemisInteraction.ennemisDestruction(coco);
+            ennemisInteraction.EnnemisDestruction(coco);
         }
         //sinon on se fait manger
         else{
-            // on perd la vie
-            life--;
-            lifeText.text = life.ToString() + " vie";
-            // si on a encore une vie on recommence
-            if(life >0){
-                // on recommence du début
-                restartLvl();
-            }
-            else{
+            PlayerDestruction();
+        }
+    }
+
+    public void PlayerDestruction()
+    {
+        // on perd la vie
+        life--;
+        lifeText.text = life.ToString() + " vie";
+        // si on a encore une vie on recommence
+        if(life >0){
+            // on recommence du début
+            RestartLvl();
+        }
+        else{
             // si on a plus de vie en stock la partie se termine
             loosingText.text = "Dommage essay encore :D";
             // quitter la partie
             StartCoroutine(theEnd());
-            }
-        }
+        }    
     }
 
-    private void restartLvl()
+    private void RestartLvl()
     {
         throw new NotImplementedException();
     }

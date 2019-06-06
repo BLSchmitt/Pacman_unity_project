@@ -9,15 +9,12 @@ public class EnnemisController : MonoBehaviour
     public NavMeshAgent navMeshAgent;
 
     public Transform[] destinationToGo;
-
-
-    // stock the spawn coordinate of the ennemis
-    public Vector3 startCoordinateEnnemis1;
+    // stock the starting position of the ennemis
+    public Transform startPositionEnnemis;
 
     void start()
     {
         navMeshAgent.SetDestination(destinationToGo[0].position);
-
     }
 
     void Update()
